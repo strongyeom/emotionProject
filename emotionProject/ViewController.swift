@@ -36,12 +36,9 @@ class ViewController: UIViewController {
         print("ViewController - viewDidLoad")
         settingMenuBtn()
         
-        
-//        btnClickAddCount = UserDefaults.standard.object([Int: Int].self, with: "btnClickAddCount")!
-//
         guard let userDefaultsDic = UserDefaultsManager.shared.loadData(key: "btnClickAddCount") else { return }
         
-            btnClickAddCount = userDefaultsDic
+        btnClickAddCount = userDefaultsDic
         
         print("딕셔너리 UserDefaults",btnClickAddCount)
     }
@@ -54,9 +51,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("ViewController - viewDidAppear")
-       
-        
-      
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,10 +62,10 @@ class ViewController: UIViewController {
         super.viewDidDisappear(animated)
         print("ViewController - viewDidDisappear")
         
-       
+        
     }
     
-  
+    
     
     
     // MARK: - 감정 클릭시
@@ -95,11 +89,9 @@ class ViewController: UIViewController {
         default:
             print("값이 없음")
         }
-      
+        
         print("btnClickAddCount",btnClickAddCount)
-
-//        UserDefaults.standard.set(object: btnClickAddCount, forKey: "btnClickAddCount")
-//
+        
         UserDefaultsManager.shared.saveData(btnClickAddCount)
     }
     
@@ -111,11 +103,12 @@ class ViewController: UIViewController {
         let plusOne = allBtnCountIncrease(addCount: 1)
         let plusFive = allBtnCountIncrease(addCount: 5)
         let plusTen = allBtnCountIncrease(addCount: 10)
-       
+        
         let buttonMenu = UIMenu(title: "메뉴 타이틀", children: [plusOne, plusFive, plusTen])
         print("btnClickAddCount",btnClickAddCount)
         
-        
+       
+
         menuBtn.menu = buttonMenu
     }
     
@@ -133,12 +126,12 @@ class ViewController: UIViewController {
                 
             }
             print("모든 버튼 + \(addCount) 증가 ",btnClickAddCount)
-            
+            UserDefaultsManager.shared.saveData(btnClickAddCount)
         })
         return addCountBtn
     }
     
-
+    
 }
 
 extension UserDefaults {
@@ -146,7 +139,7 @@ extension UserDefaults {
         guard let data = self.value(forKey: key) as? Data else { return nil }
         return try? decoder.decode(type.self, from: data)
     }
-
+    
     func set<T: Codable>(object: T, forKey key: String, usingEncoder encoder: JSONEncoder = JSONEncoder()) {
         let data = try? encoder.encode(object)
         self.set(data, forKey: key)

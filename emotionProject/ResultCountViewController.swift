@@ -20,7 +20,7 @@ class ResultCountViewController: UIViewController {
         
     }
     
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("ResultCountViewController - viewWillAppear")
@@ -34,9 +34,16 @@ class ResultCountViewController: UIViewController {
         }
         
         
-        
+        applyCount()
         print("ResultCountViewController - resultCount",resultCount)
     }
+    
+    func applyCount() {
+        for index in 0..<resultCountCollection.count {
+            resultCountCollection[index].text = "\(resultCount[index] ?? 0)점"
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
