@@ -73,23 +73,23 @@ class ViewController: UIViewController {
         
         btnClickAddCount[sender.tag] = btnClickAddCount[sender.tag]! + 1
         
+        let btnClickCount = BtnClickCount(rawValue: sender.tag)
         
-        
-        switch sender.tag {
-        case BtnClickCount.fullSmile.rawValue:
+        switch btnClickCount {
+        case .fullSmile:
             print("완전 행복지수",btnClickAddCount[sender.tag] ?? 0)
-        case BtnClickCount.smile.rawValue:
+        case .smile:
             print("행복지수",btnClickAddCount[sender.tag] ?? 0)
-        case BtnClickCount.normal.rawValue:
-            print("보통임",btnClickAddCount[sender.tag] ?? 0)
-        case BtnClickCount.sad.rawValue:
+        case .normal:
+            print("보통",btnClickAddCount[sender.tag] ?? 0)
+        case .sad:
             print("슬픔",btnClickAddCount[sender.tag] ?? 0)
-        case BtnClickCount.alotOfSad.rawValue:
+        case .alotOfSad:
             print("완전 슬픔",btnClickAddCount[sender.tag] ?? 0)
-        default:
-            print("값이 없음")
+        case .none:
+            print("이상한 값이 들어왔음 ")
         }
-        
+
         print("btnClickAddCount",btnClickAddCount)
         
         UserDefaultsManager.shared.saveData(btnClickAddCount)
