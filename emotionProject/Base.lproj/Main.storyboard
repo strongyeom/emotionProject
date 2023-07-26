@@ -84,13 +84,6 @@
                                     <action selector="memuButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P9Q-l0-mTr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5d-59-Ycx">
-                                <rect key="frame" x="194" y="455" width="117" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -106,7 +99,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="작성하기" image="pencil.circle.fill" catalog="system" id="0JA-yT-yxU"/>
                     <connections>
-                        <outlet property="exampleLabel" destination="k5d-59-Ycx" id="hwO-uW-L86"/>
                         <outlet property="menuBtn" destination="1OT-GZ-6rF" id="QFm-KO-Wjf"/>
                     </connections>
                 </viewController>
@@ -250,6 +242,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="W5A-lm-YSY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p4Y-yf-0t1">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

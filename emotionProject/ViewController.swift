@@ -103,8 +103,8 @@ class ViewController: UIViewController {
         let plusOne = allBtnCountIncrease(addCount: 1)
         let plusFive = allBtnCountIncrease(addCount: 5)
         let plusTen = allBtnCountIncrease(addCount: 10)
-        
-        let buttonMenu = UIMenu(title: "메뉴 타이틀", children: [plusOne, plusFive, plusTen])
+        let cancel = allBtnCountRemove(addCount: "allRemoveCount")
+        let buttonMenu = UIMenu(title: "메뉴 타이틀", children: [plusOne, plusFive, plusTen, cancel])
         print("btnClickAddCount",btnClickAddCount)
         
        
@@ -131,19 +131,20 @@ class ViewController: UIViewController {
         return addCountBtn
     }
     
+    func allBtnCountRemove(addCount: String) -> UIAction {
+        let addCountBtn = UIAction(title: "모든 카운트 제거", handler: { [weak self] _ in
+            guard let self = self else { return }
+            for i in 0..<btnClickAddCount.count {
+                btnClickAddCount[i] = 0
+                
+            }
+            UserDefaultsManager.shared.saveData(btnClickAddCount)
+        })
+        return addCountBtn
+    }
+    
     
 }
 
-extension UserDefaults {
-    func object<T: Codable>(_ type: T.Type, with key: String, usingDecoder decoder: JSONDecoder = JSONDecoder()) -> T? {
-        guard let data = self.value(forKey: key) as? Data else { return nil }
-        return try? decoder.decode(type.self, from: data)
-    }
-    
-    func set<T: Codable>(object: T, forKey key: String, usingEncoder encoder: JSONEncoder = JSONEncoder()) {
-        let data = try? encoder.encode(object)
-        self.set(data, forKey: key)
-    }
-}
 
 

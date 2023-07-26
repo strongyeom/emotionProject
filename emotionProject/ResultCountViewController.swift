@@ -20,7 +20,7 @@ class ResultCountViewController: UIViewController {
         
     }
     
-
+    // 트리거 역할 reload 해준다.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("ResultCountViewController - viewWillAppear")
